@@ -9,6 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
     input.value = 0;
 });
 
+// Using the IIFE to create private and public methods and variables
 const mainFunctionality = (function () {
 
     let arrayNumbers = [];
@@ -101,6 +102,7 @@ const mainFunctionality = (function () {
 
 })();
 
+// in the click event below we access only the methods that was returned in the mainFunctionality object above.
 ans.addEventListener("click", () => {
     let result;
     let value = input.value;
