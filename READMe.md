@@ -1,5 +1,5 @@
 # Learning-advanced-JavaScript
-* [calculator project](https://github.com/nguHelon/learning-advanced-Javascript/edit/master/READMe.md#calculator-project)
+* [calculator project](https://github.com/nguHelon/learning-advanced-Javascript/blob/master/READMe.md#calculator-project)
 * [task list project](https://github.com/nguHelon/learning-advanced-Javascript/blob/master/READMe.md#task-list-project)
 
 # Calculator project
