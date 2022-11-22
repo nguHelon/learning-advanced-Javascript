@@ -3,9 +3,19 @@ const nameInput = document.getElementById("name");
 const descInput = document.getElementById("desc");
 const taskContainer = document.querySelector(".container .task-container");
 const addTaskBtn = document.querySelector(".container .inputs-div .submit-btn");
+const message = document.querySelector(".container .message");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    const list = (localStorage.getItem("list") === null) ? [] : JSON.parse(localStorage.getItem("list"));
+    list.forEach((item) => {
+        let article = document.createElement("article");
+        let content = "";
+        taskFunctions.taskMaker(item.nameValue, item.descValue, article, content, item.id);
+    });
 });
 
 //Trying JavaScript Classes
@@ -28,8 +38,12 @@ class task {
 
     deleteTask(e) {
         const task = e.currentTarget.parentElement.parentElement;
+        const id = e.currentTarget.parentElement.parentElement.dataset.id;
+        console.log(id);
 
         task.style.display = "none";
+        taskFunctions.removeFromLocalStorage(id);
+        taskFunctions.alertMessage("failed", "task removed succesfully");
     }
 }
 
@@ -47,7 +61,7 @@ const taskFunctions = (function () {
             </div>
         `;
         newTask.article.classList.add("task");
-        newTask.article.setAttribute("data-id", "");
+        newTask.article.setAttribute("data-id", `${newTask.id}`);
         newTask.article.innerHTML = newTask.content;
         taskContainer.appendChild(newTask.article);
 
@@ -81,10 +95,19 @@ const taskFunctions = (function () {
         localStorage.setItem("list", JSON.stringify(newList));
     }
 
+    function alertMessage(className, information) {
+        message.classList.add(`${className}`);
+        message.textContent = information;
+        setTimeout(() => {
+            message.classList.remove(`${className}`);
+        }, 2000);
+    }
+
     return {
         taskMaker,
         addToLocalStorage,
-        removeFromLocalStorage
+        removeFromLocalStorage,
+        alertMessage
     }
 })();
 
@@ -97,4 +120,6 @@ addTaskBtn.addEventListener("click", () => {
     let id = new Date();
     id = id.getTime();
     taskFunctions.taskMaker(nameValue, descValue, article, content, id);
+    taskFunctions.addToLocalStorage(nameValue, descValue, id);
+    taskFunctions.alertMessage("success", "task added successfully");
 });
