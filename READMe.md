@@ -1,5 +1,6 @@
 # Learning-advanced-JavaScript
 * [calculator project](https://github.com/nguHelon/learning-advanced-Javascript/edit/master/READMe.md#calculator-project)
+* [task list project](https://github.com/nguHelon/learning-advanced-Javascript/blob/master/READMe.md#task-list-project)
 
 # Calculator project
 
@@ -33,3 +34,17 @@ The Lexical environment is where our code is physically written, In a JavaScript
 Closures here play a very important role. Intuitively speaking we know that when we run a functionality and its completed, any variable in it can not more be accessible. But when we run maybe mainFunctionality.add( ) method it still works even though the IIFE run already. Well, In JavaScript, we have closures, closures are a combination of a lexical environment and functions that are declared in it. So that means, the add( ) method references to it instance in the IIFE where the arrayNumbers and latesInputValue variables are, that is why add( ) can remember those variables since they formed a closure.
 
 # task list project
+
+...
+## A fully functional task list made with JavaScript programming language.
+This is project, that I chose in order to test myself with JavaScript classes and once more the revealing module pattern in JavaScript. I used the following
+
+* IIFE
+* Classes
+* Reveaing module pattern
+* Local Storage
+
+![task list](https://user-images.githubusercontent.com/112963092/203365619-46f42b6a-830e-4917-bbac-915b0b6927f3.png)
+
+# Classes
+Well JavaScript classes are very important, and they have their own use cases. I know that a JavaScript is not an Object but it is actually a **Template** for creating JavaScript objects. It does that by using the **constructor** method in the class and creates a new object that inherits the properties declared in that constructor method.
