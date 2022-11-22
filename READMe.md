@@ -1,4 +1,7 @@
-# learning-advanced-Javascript
+# Learning-advanced-JavaScript
+* [calculator project](https://github.com/nguHelon/learning-advanced-Javascript/edit/master/READMe.md#calculator-project)
+
+# Calculator project
 
 ...
 ## A fully functional calculator created with JavaScript programming language with HTML and CSS.
@@ -28,3 +31,5 @@ The Lexical environment is where our code is physically written, In a JavaScript
 
 ### Closures
 Closures here play a very important role. Intuitively speaking we know that when we run a functionality and its completed, any variable in it can not more be accessible. But when we run maybe mainFunctionality.add( ) method it still works even though the IIFE run already. Well, In JavaScript, we have closures, closures are a combination of a lexical environment and functions that are declared in it. So that means, the add( ) method references to it instance in the IIFE where the arrayNumbers and latesInputValue variables are, that is why add( ) can remember those variables since they formed a closure.
+
+# task list project
