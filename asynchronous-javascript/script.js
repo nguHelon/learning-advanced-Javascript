@@ -44,6 +44,7 @@ one(two);
 
 // Example used to understand callback functions
 
+/*
 let stocks = {
     Fruits: ["Strawberry", "Grapes", "banana", "apple"],
     liquid: ["water", "ice"],
@@ -95,3 +96,24 @@ let production = () => {
 }
 
 order(0, production);
+*/
+
+// Learning more about callbacks
+const cart = ["shoes", "pants", "kurta"];
+
+api.createOrder(cart, function () {
+
+    api.proceddToPayment(function () {
+
+        api.showOrderSummary(function () {
+
+            api.updateWallet();
+        })
+
+    }
+    )
+
+})
+
+
+
