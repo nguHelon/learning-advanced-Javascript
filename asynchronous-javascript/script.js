@@ -99,7 +99,7 @@ order(0, production);
 */
 
 // Learning more about callbacks
-const cart = ["shoes", "pants", "kurta"];
+/*const cart = ["shoes", "pants", "kurta"];
 
 api.createOrder(cart, function () {
 
@@ -114,6 +114,35 @@ api.createOrder(cart, function () {
     )
 
 })
+*/
 
+// Personal example of call backs
+// say we want to create a program for a sandwich maker
+// * need the bread, tomato, lettuce, bacon, cheese, mayo, meat, fries
+// * we need to chop the bread and ingredients
+// * we also need to place the ingredients on the bread
+// * we also need to rub the mayo on it
 
+let type = ["vegetarian", "not vegetarian"];
+let ingredients = ["bread", "tomato", "lettuce", "bacon", "cheese", "mayo", "meat", "fries"];
+let vegetarianIngredient = ["bread", "tomato", "lettuce", "cheese", "mayo", "fries"];
 
+let maker = (type) => {
+    sandWichType(type, function () {
+
+        selectingredients(ingredients, function () {
+
+            chopper(ingredients, function () {
+
+                ingredientPlacer(ingredients, function () {
+
+                    finish(ingredients, function () {
+
+                        Serve();
+                    })
+                })
+            })
+
+        })
+    })
+}
