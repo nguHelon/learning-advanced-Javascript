@@ -123,7 +123,7 @@ api.createOrder(cart, function () {
 // * we also need to place the ingredients on the bread
 // * we also need to rub the mayo on it
 
-let type = ["vegetarian", "not vegetarian"];
+/*let type = ["vegetarian", "not vegetarian"];
 let ingredients = ["bread", "tomato", "lettuce", "bacon", "cheese", "mayo", "meat", "fries"];
 let vegetarianIngredient = ["bread", "tomato", "lettuce", "cheese", "mayo", "fries"];
 
@@ -146,3 +146,35 @@ let maker = (type) => {
         })
     })
 }
+*/
+
+let stocks = {
+    Fruits: ["Strawberry", "Grapes", "banana", "apple"],
+    liquid: ["water", "ice"],
+    holder: ["cone", "cup", "stick"],
+    toppings: ["chocolate", "peanuts"],
+}
+
+// Promises
+let is_shop_open = true;
+
+let order = (time, work) => {
+
+    return new Promise((resolve, reject) => {
+
+        if (is_shop_open) {
+
+            setTimeout(() => {
+                resolve(work());
+            }, time)
+        }
+
+        else {
+            reject(console.log("our shop is closed"))
+        }
+
+    })
+
+}
+
+order(2000, () => console.log(`${stocks.Fruits[0]}`));
