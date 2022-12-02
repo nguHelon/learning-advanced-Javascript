@@ -144,37 +144,39 @@ let maker = (type) => {
             })
 
         })
-    })
+    }) 
 }
 */
 
-let stocks = {
-    Fruits: ["Strawberry", "Grapes", "banana", "apple"],
-    liquid: ["water", "ice"],
-    holder: ["cone", "cup", "stick"],
-    toppings: ["chocolate", "peanuts"],
+// let stocks = {
+//     Fruits: ["Strawberry", "Grapes", "banana", "apple"],
+//     liquid: ["water", "ice"],
+//     holder: ["cone", "cup", "stick"],
+//     toppings: ["chocolate", "peanuts"],
+// }
+
+// more callback examples
+
+let isBagEmpty = true;
+let username = "Helon";
+
+function checkBag(emptyBag, fullBag) {
+    if (isBagEmpty) {
+        emptyBag({
+            schoolFurniture: ["Books", "pencils", "pens", "erasers"],
+            money: 200
+        })
+    } else {
+        fullBag(`Hey ${username} You are ready to go to school`);
+    }
 }
 
-// Promises
-let is_shop_open = true;
 
-let order = (time, work) => {
+checkBag((object) => {
+    let schoolStuffs = object.schoolFurniture.join(", ");
+    let money = object.money;
 
-    return new Promise((resolve, reject) => {
-
-        if (is_shop_open) {
-
-            setTimeout(() => {
-                resolve(work());
-            }, time)
-        }
-
-        else {
-            reject(console.log("our shop is closed"))
-        }
-
-    })
-
-}
-
-order(2000, () => console.log(`${stocks.Fruits[0]}`));
+    console.log(`Hey ${username} take your ${schoolStuffs} and $${money} and go to school right Now!!!`);
+}, (message) => {
+    console.log(message);
+});
