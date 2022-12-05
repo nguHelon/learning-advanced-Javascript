@@ -180,3 +180,4 @@ checkBag((object) => {
 }, (message) => {
     console.log(message);
 });
+

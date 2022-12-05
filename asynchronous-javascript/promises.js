@@ -108,7 +108,7 @@ checkBag((object) => {
 */
 
 // PROMISE ALTERNATIVE OF EXAMPLE ABOVE
-
+/*
 let isBagEmpty = false;
 let username = "helon";
 
@@ -131,3 +131,54 @@ promise.then((object) => {
 }).catch((message) => {
     console.log(message);
 })
+*/
+
+const cart = ["shoes", "pants", "money"];
+
+createOrder(cart)
+    .then((orderId) => {
+        console.log(orderId);
+        return orderId;
+    })
+    .then((orderId) => {
+        return proceedToPayment(orderId);
+    })
+    .then((paymentInfo) => {
+        console.log(paymentInfo);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+    .then(() => {
+        console.log("I must to succeed");
+    })
+
+function createOrder(cart) {
+    const pr = new Promise((resolve, reject) => {
+
+        if (!validateCart(cart)) {
+            const err = new Error("Cart is not valid");
+            reject(err)
+        }
+
+        const orderId = "12345";
+        if (orderId) {
+            setTimeout(function () {
+                resolve(orderId);
+            }, 5000)
+        }
+
+    });
+
+    return pr;
+}
+
+function proceedToPayment(orderId) {
+    return new Promise((resolve, reject) => {
+        resolve("payment successful");
+    })
+}
+
+function validateCart(cart) {
+    return true;
+}
