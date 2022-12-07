@@ -273,5 +273,5 @@ createOrder()
         console.log(error);
     })
     .finally(() => {
-        console.log("contact me on nguhelon@gmail.com or view my github @nguhelon");
+        console.log("we'er done here");
     })

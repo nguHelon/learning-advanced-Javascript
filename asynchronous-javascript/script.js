@@ -156,7 +156,7 @@ let maker = (type) => {
 // }
 
 // more callback examples
-
+/*
 let isBagEmpty = true;
 let username = "Helon";
 
@@ -181,3 +181,163 @@ checkBag((object) => {
     console.log(message);
 });
 
+*/
+
+// A promise example which I want to convert to a callback in order to understand something more
+/* 
+const cart = ["shoes", "bags", "pants", "mouse", "keyboard"];
+const nbrOfItems = 3;
+
+
+const userOrder = (nbrOfItems) => {
+    let userCart = [];
+    if (nbrOfItems < 5) {
+        for (let i = 0; i <= nbrOfItems; i++) {
+            userCart.push(cart[i]);
+        }
+        return userCart;
+    } else {
+        return "can not place order with that amount of items";
+    }
+}
+
+const validateOrder = () => {
+    let order = userOrder(nbrOfItems);
+    if (order.length == nbrOfItems + 1) {
+        return true;
+    } else {
+        return order;
+    }
+}
+
+const createOrder = () => {
+    return new Promise((resolve, reject) => {
+        let orderState = validateOrder();
+        if (orderState == true) {
+            let orderId = new Date().getTime();
+            resolve(orderId);
+        } else {
+            reject(orderState);
+        }
+    })
+}
+
+const proceedToPayment = (orderId) => {
+    return new Promise((resolve, reject) => {
+        if (orderId) {
+            setTimeout(() => {
+                console.log("payment successful");
+                resolve(orderId);
+            }, 1500);
+        }
+    })
+}
+
+const showOrderSummary = (orderId) => {
+    return new Promise((resolve, reject) => {
+        console.log(`showing order for orderId: ${orderId}`);
+        let cart = userOrder(nbrOfItems);
+        let newCart = cart.map((item) => {
+            return `${item}`;
+        });
+        cart.join(", ")
+        resolve(`you ordered ${newCart}`);
+    })
+}
+
+const updateWallet = () => {
+    return new Promise((resolve, reject) => {
+        resolve("your balance is whatever you spent 🤣");
+    })
+}
+
+createOrder()
+    .then((orderId) => {
+        return proceedToPayment(orderId);
+    })
+    .then((orderId) => {
+        return showOrderSummary(orderId);
+    })
+    .then((orderSummary) => {
+        console.log(orderSummary);
+        return updateWallet();
+    })
+    .then((balance) => {
+        console.log(balance);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+    .finally(() => {
+        console.log("we'er done here");
+    })
+
+*/
+
+const cart = ["shoes", "bags", "pants", "mouse", "keyboard"];
+const nbrOfItems = 4;
+
+
+const userOrder = (nbrOfItems) => {
+    let userCart = [];
+    if (nbrOfItems < 5) {
+        for (let i = 0; i <= nbrOfItems; i++) {
+            userCart.push(cart[i]);
+        }
+        return userCart;
+    } else {
+        return "can not place order with that amount of items";
+    }
+}
+
+const validateOrder = () => {
+    let order = userOrder(nbrOfItems);
+    if (order.length == nbrOfItems + 1) {
+        return true;
+    } else {
+        return order;
+    }
+}
+
+const createOrder = (validateOrder, proceedToPayment) => {
+    let orderState = validateOrder();
+    if (orderState == true) {
+        let orderId = new Date().getTime();
+        proceedToPayment(orderId);
+    } else {
+        console.log(orderState);
+    }
+
+}
+
+const proceedToPayment = (orderId, showOrderSummary) => {
+    if (orderId) {
+        setTimeout(() => {
+            console.log("payment successful");
+            showOrderSummary(orderId);
+        }, 1500);
+    }
+}
+
+const showOrderSummary = (orderId, updateWallet) => {
+    console.log(`showing order for orderId: ${orderId}`);
+    let cart = userOrder(nbrOfItems);
+    let newCart = cart.map((item) => {
+        return `${item}`;
+    });
+    cart.join(", ")
+    console.log(`you ordered ${newCart}`);
+    updateWallet();
+}
+
+const updateWallet = () => {
+    console.log("your balance is your wallet money substracted by whatever you spent 🤣");
+}
+
+createOrder(validateOrder, (orderId) => {
+    proceedToPayment(orderId, (orderId) => {
+        showOrderSummary(orderId, () => {
+            updateWallet();
+        })
+    })
+})
