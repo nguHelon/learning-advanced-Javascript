@@ -66,10 +66,6 @@ function mealRecipeModal(meal) {
         <p>
            ${meal.strInstructions}
         </p>
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In aperiam praesentium laudantium
-            consectetur nobis autem?
-        </p>
     </div>
     <div class="recipe-meal-img">
         <img src="${meal.strMealThumb}" alt="">
