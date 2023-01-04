@@ -34,3 +34,32 @@
 let result = getIndexToIns([], 1);
 console.log(result);
 */
+
+/* 
+ **Question
+ Chunky Monkey
+Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
+
+
+** Solution
+function chunkArrayInGroups(arr, size) {
+  let arrAcc = [];
+  let newArr = [];
+  let cntr = 0;
+  for (let i = 0; i <= arr.length - 1; i++) {
+      if(cntr === size) {
+        cntr = 0;
+        arrAcc.push(newArr);
+        newArr = [];
+      }      
+      newArr.push(arr[i])
+      cntr++;
+  }
+
+  arrAcc.push(newArr);
+  return arrAcc;
+}
+
+let result = chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 2);
+console.log(result);
+*/
