@@ -63,3 +63,62 @@ function chunkArrayInGroups(arr, size) {
 let result = chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 2);
 console.log(result);
 */
+
+/* 
+**** Question: Sum All Numbers in a Range
+
+We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+
+For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+
+***** Solution
+function sumAll(arr) {
+  let firstNum = arr[0];
+  let secondNum = arr[1];
+
+  if (firstNum > secondNum) {
+    firstNum = arr[1];
+    secondNum = arr[0];
+  }
+
+  let acc = 0;
+  for (let i = firstNum; i <= secondNum; i++) {
+    acc += i;
+  }
+  return acc;
+}
+
+let result = sumAll([4, 1]);
+;console.log(result)
+*/
+
+/*
+*** Question: Seek and Destroy
+
+You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
+
+Note: You have to use the arguments object.
+
+*** Solution
+function destroyer(arr) {
+  let mainArr = arguments[0];
+
+  let subArr = [];
+  for (let i = 1; i <= arguments.length - 1; i++) {
+    subArr.push(arguments[i]);
+  }
+
+  let newArr = [];
+  for(let j = 0; j <= mainArr.length - 1; j++) {
+    if(subArr.includes(mainArr[j]) === false) {
+      newArr.push(mainArr[j]);
+    }
+  }
+
+  return newArr;
+}
+
+let result = destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3);
+console.log(result);
+
+*/
