@@ -122,3 +122,52 @@ let result = destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3);
 console.log(result);
 
 */
+
+/*
+**** Question: Pig Latin
+Pig Latin is a way of altering English Words. The rules are as follows:
+
+- If a word begins with a consonant, take the first consonant or consonant cluster, move it to the end of the word, and add ay to it.
+
+- If a word begins with a vowel, just add way at the end.
+
+**** Solution: 
+function translatePigLatin(str) {
+  let consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
+  let splittedStr = str.split("");
+  let firstLetter = splittedStr[0];
+
+  if (consonants.includes(firstLetter)) {
+    let consonantCluster = [];
+    let finalString = []
+    let lastConsonants = "";
+
+    for(let i = 0; i <= splittedStr.length; i++) {
+      if (consonants.includes(splittedStr[i])) {
+        consonantCluster.push(splittedStr[i]);
+      } else {
+        break;
+      }
+    }
+    
+    lastConsonants = consonantCluster.join("");
+    
+    for(let i = 0; i <= splittedStr.length - 1; i++) {
+      if (splittedStr.includes(consonantCluster[i]) == false) {
+        finalString.push(splittedStr[i]);
+      }
+    }
+    console.log(finalString)
+    str = finalString.join("") + lastConsonants + 'ay';
+
+  } else if(vowels.includes(firstLetter)){
+    str = str + "way";
+  }
+
+  return str;
+}
+
+let result = translatePigLatin("paragraphs");
+console.log(result);
+*/
