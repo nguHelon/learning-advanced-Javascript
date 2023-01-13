@@ -171,3 +171,46 @@ function translatePigLatin(str) {
 let result = translatePigLatin("paragraphs");
 console.log(result);
 */
+
+/*
+*** Question : DNA Pairing
+Pairs of DNA strands consist of nucleobase pairs. Base pairs are represented by the characters AT and CG, which form building blocks of the DNA double helix.
+
+The DNA strand is missing the pairing element. Write a function to match the missing base pairs for the provided DNA strand. For each character in the provided string, find the base pair character. Return the results as a 2d array.
+
+For example, for the input GCG, return [["G", "C"], ["C","G"], ["G", "C"]]
+
+The character and its pair are paired up in an array, and all the arrays are grouped into one encapsulating array.
+
+
+**** Solution:
+function pairElement(str) {
+  let splittedStr = str.split("");
+  let arrAcc = [];
+
+  for(let i = 0; i <= splittedStr.length - 1; i++) {
+    let eleArr = [];
+    eleArr.push(splittedStr[i]);
+    arrAcc.push(eleArr);
+  }
+
+  for(let i = 0; i <= arrAcc.length - 1; i++) {
+    let element = arrAcc[i][0];
+
+    if(element == "G") {
+      arrAcc[i].push("C");
+    } else if(element == "C") {
+      arrAcc[i].push("G");
+    } else if(element == "A") {
+      arrAcc[i].push("T");
+    } else if(element == "T") {
+      arrAcc[i].push("A");
+    }
+  }
+
+  return arrAcc;
+}
+
+let result = pairElement("GCG");
+console.log(result)
+*/
