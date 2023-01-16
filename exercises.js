@@ -214,3 +214,36 @@ function pairElement(str) {
 let result = pairElement("GCG");
 console.log(result)
 */
+
+/*
+**** Question: Missing Letters
+Find the missing letter in the passed letter range and return it.
+
+If all letters are present in the range, return undefined.
+
+**** Solution:
+
+function fearNotLetter(str) {
+  let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  let missingLetter = "";
+
+  let splittedStr = str.split("");
+  let indexOfFirstLetter = alphabet.indexOf(splittedStr[0]);
+  
+  if (splittedStr.length < 26) {
+    for (let i = indexOfFirstLetter; i <= alphabet.length-1; i++){
+      if(splittedStr.includes(alphabet[i]) == false) {
+        missingLetter = alphabet[i];
+        break;
+      }
+    }
+  } else {
+    missingLetter = undefined;
+  }
+
+  return missingLetter;
+}
+
+let result = fearNotLetter("abcdefghijklmnopqrstuvwxyz");
+console.log(result);
+*/
