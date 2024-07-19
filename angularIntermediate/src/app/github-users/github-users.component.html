@@ -1,0 +1,12 @@
+<div class="w-100 d-flex flex-column justify-content-center align-items-center gap-4">
+    <h1 class="fs-3 text-black text-uppercase fw-bold">Github followers</h1>
+    <div class="w-100 d-flex justify-content-center align-items-center gap-5 flex-wrap">
+        <div *ngFor="let user of githubUsers" class="d-flex gap-2">
+            <img [src]="user.avatar_url" style="width: 100px; height: 100px; border-radius: 100%" alt="">
+            <div class="d-flex flex-column gap-2">
+                <h2 class="text-black fs-2 fw-medium">{{user.login}}</h2>
+                <a [href]="user.html_url">{{user.html_url}}</a>
+            </div>
+        </div>
+    </div>
+</div>
