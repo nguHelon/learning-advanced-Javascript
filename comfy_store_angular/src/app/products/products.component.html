@@ -1,0 +1,23 @@
+<div class="w-100">
+    <div class="py-4 text-center">
+        <h1 class="fw-bold text-darkGreen">Shop Things for your comfort</h1>
+    </div>
+    <div class="row px-4 py-4 bg-lightGray">
+        <div class="col-3">
+            <input (ngModelChange)="onSearch(searchInput)" ngModel #searchInput="ngModel" type="text"
+                class="w-100 text-darkGreen p-2 rounded-2 fw-semibold shadow-sm" style="outline: none; border: none">
+            <div class="w-100 d-flex flex-column mt-3">
+                <p class="w-100 p-2 text-start fw-semibold text-capitalize rounded-2 product cursor-pointer"
+                    (click)="loadProductsByCategory('All')">All</p>
+                <p *ngFor="let category of allCategories$ | async"
+                    class="w-100 p-2 text-start fw-semibold text-capitalize rounded-2 product cursor-pointer"
+                    (click)="loadProductsByCategory(category)">
+                    {{ category }}
+                </p>
+            </div>
+        </div>
+        <div class="col-9 d-flex justify-content-center gap-3 flex-wrap">
+            <app-product *ngFor="let product of products" [product]="product"></app-product>
+        </div>
+    </div>
+</div>

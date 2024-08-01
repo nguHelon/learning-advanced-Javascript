@@ -1,0 +1,34 @@
+<div class="position-fixed top-0 end-0 bg-white shadow-lg p-3" style="height: 100vh; width: 400px"
+    [ngStyle]="{'display': closeSideBar ? 'none' : 'block'}">
+    <div class="w-100 d-flex justify-content-between align-items-center">
+        <button (click)="onCloseSideBar()" class="btn btn-dark">Close</button>
+        <h1 class="fs-4 text-darkGreen">Your Cart</h1>
+    </div>
+    <div class="w-100 d-flex flex-column gap-3 pt-4 pb-2 overflow-y-scroll" style="height: 60vh">
+        <div *ngFor="let cartProduct of cartProducts$ | async" class="w-100 d-flex">
+            <img class="w-25" [src]="cartProduct.image" alt="">
+            <div class="w-75 d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-column">
+                    <p *ngIf="cartProduct.title.length < 10; else productTitle2" class="p-0">{{cartProduct.title}}</p>
+                    <ng-template #productTitle2>{{cartProduct.title.slice(0, 20)}}...</ng-template>
+                    <p>${{cartProduct.price}}</p>
+                    <button (click)="removeFromCart(cartProduct.id)" class="btn btn-dark">remove</button>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <i (click)="increaseProductQuantity(cartProduct)" class="fa fa-arrow-up cursor-pointer"
+                        aria-hidden="true"></i>
+                    <p class="m-0">{{cartProduct.quantity}}</p>
+                    <i (click)="decreaseProductQuantity(cartProduct)" class="fa fa-arrow-down cursor-pointer"
+                        aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-100 position-absolute bottom-0 start-0 d-flex justify-content-between align-items-center px-3 pb-5">
+        <div>
+            <p class="fw-bold fs-4">Total: <span class="text-darkerGreen">${{totalPrice}}</span></p>
+            <button (click)="clearCart()" class="btn btn-dark">Clear</button>
+        </div>
+        <button class="btn btn-darkGreen">Pay</button>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div>
+    <app-header (closeSideBarEvent)="closeTheSideBar($event)"></app-header>
+    <app-sidebar (closeSideBarEvent)="closeTheSideBar($event)" [closeSideBar]="closeSideBar"></app-sidebar>
+    <router-outlet></router-outlet>
+
+
+    <app-footer></app-footer>
+</div>
